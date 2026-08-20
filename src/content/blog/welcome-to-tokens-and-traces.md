@@ -2,10 +2,11 @@
 title: 'Welcome to Tokens & Traces'
 description: 'An introduction to my research notes on machine learning mechanics, computer security, and systems engineering.'
 pubDate: 'Aug 19 2026'
-heroImage: '../../assets/blog-placeholder-1.jpg'
 ---
 
 Welcome to **Tokens & Traces**. This blog is a technical notebook focused on the mechanics of machine learning models, computer security vulnerabilities, autograd engines, and high-performance systems engineering.
+
+![Tokens & Traces — AI Attention & System Traces Architecture](/welcome-banner.jpg)
 
 ## Why "Tokens & Traces"?
 
