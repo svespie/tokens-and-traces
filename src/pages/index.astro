@@ -84,7 +84,7 @@ const posts = (await getCollection('blog')).sort(
 				<!-- Sidebar Profile Area -->
 				<aside class="sidebar-col">
 					<div class="profile-card">
-						<div class="avatar-box">SV</div>
+						<img src="/stan-vespie.jpg" alt="Stan Vespie" class="avatar-img" />
 						<h3 class="profile-name">Stan Vespie</h3>
 						<p class="profile-role">AI & Security Researcher</p>
 						<p class="profile-email">stan [at] vespie [dot] dev</p>
@@ -177,18 +177,14 @@ const posts = (await getCollection('blog')).sort(
 		font-family: var(--font-sans);
 	}
 
-	.avatar-box {
-		width: 70px;
-		height: 70px;
-		background: #a02020;
-		color: white;
-		font-weight: 700;
-		font-size: 1.5em;
+	.avatar-img {
+		width: 85px;
+		height: 85px;
 		border-radius: 50%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		object-fit: cover;
+		border: 2px solid var(--border-color);
 		margin: 0 auto 1em auto;
+		display: block;
 	}
 
 	.profile-name {
