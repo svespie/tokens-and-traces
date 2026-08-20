@@ -30,7 +30,7 @@ Articles on this site fall into three core categories:
 
 ## Code & Mathematical Formulations
 
-Technical posts will frequently include code snippets and explicit mathematical derivations:
+Technical posts may include code snippets and explicit mathematical derivations:
 
 ```python
 def scalar_autograd_example():
