@@ -66,17 +66,7 @@ const posts = (await getCollection('blog')).sort(
 					<!-- Projects Section -->
 					<section class="section-box">
 						<h2>Projects & Code</h2>
-						<ul class="project-list">
-							<li>
-								<strong><a href="https://github.com/svespie" target="_blank">micrograd</a></strong> — Lightweight autograd engine and scalar-valued backpropagation explorer.
-							</li>
-							<li>
-								<strong><a href="https://github.com/svespie" target="_blank">nano-gpt</a></strong> — Mini transformer decoder experiments and attention weight analysis.
-							</li>
-							<li>
-								<strong><a href="https://github.com/svespie" target="_blank">synapse</a></strong> — High-throughput systems telemetry daemon.
-							</li>
-						</ul>
+						<p class="coming-soon">Coming Soon!</p>
 					</section>
 
 				</div>
@@ -87,15 +77,12 @@ const posts = (await getCollection('blog')).sort(
 						<img src="/stan-vespie.jpg" alt="Stan Vespie" class="avatar-img" />
 						<h3 class="profile-name">Stan Vespie</h3>
 						<p class="profile-role">AI & Security Researcher</p>
-						<p class="profile-email">stan [at] vespie [dot] dev</p>
 
 						<hr class="card-divider" />
 
 						<div class="profile-links">
 							<a href="https://github.com/svespie" target="_blank">GitHub</a>
 							<a href="https://www.linkedin.com/in/svespie/" target="_blank">LinkedIn</a>
-							<a href="https://scholar.google.com" target="_blank">Google Scholar</a>
-							<a href="https://x.com" target="_blank">X / Twitter</a>
 						</div>
 					</div>
 				</aside>
@@ -157,13 +144,9 @@ const posts = (await getCollection('blog')).sort(
 		margin-bottom: 0;
 	}
 
-	.project-list {
-		list-style-type: square;
-		padding-left: 1.2em;
-	}
-
-	.project-list li {
-		margin-bottom: 0.8em;
+	.coming-soon {
+		font-style: italic;
+		color: var(--text-muted);
 		font-size: 0.95em;
 	}
 
