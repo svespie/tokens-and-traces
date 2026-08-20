@@ -1,21 +1,17 @@
-# Astro Starter Kit: Blog
+# Tokens & Traces — Stan Vespie
 
-```sh
-npm create astro@latest -- --template blog
-```
+> Personal research blog and technical notes on machine learning mechanics, computer security vulnerabilities, autograd runtimes, and systems engineering.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Hosted live at [stanvespie.com](https://stanvespie.com).
 
-Features:
+## 🚀 Writing Workflow
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and Open Graph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+Add new articles as `.md` or `.mdx` files in:
+`src/content/blog/`
 
-## 🚀 Project Structure
+---
+
+
 
 Inside of your Astro project, you'll see the following folders and files:
 

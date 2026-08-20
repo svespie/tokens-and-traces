@@ -1,49 +1,239 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={`${SITE_TITLE} — Stan Vespie`} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<div class="layout-grid">
+				
+				<!-- Main Content Area -->
+				<div class="content-col">
+					
+					<!-- About Section -->
+					<section class="section-box">
+						<h2>About</h2>
+						<p>
+							Welcome to <strong>Tokens & Traces</strong>. I write about machine learning mechanics, 
+							computer security vulnerabilities, autograd runtimes, and systems engineering.
+						</p>
+						<p>
+							My recent work focuses on adversarial prompt injections, transformer attention dynamics, 
+							and lightweight autograd engines written from scratch.
+						</p>
+					</section>
+
+					<!-- Recent Posts Section -->
+					<section class="section-box">
+						<div class="section-header">
+							<h2>Recent Writing</h2>
+						</div>
+						<ul class="post-list">
+							{
+								posts.map((post) => (
+									<li class="post-entry">
+										<span class="post-date">
+											<FormattedDate date={post.data.pubDate} />
+										</span>
+										<div class="post-body">
+											<a href={`/blog/${post.id}/`} class="post-title">
+												{post.data.title}
+											</a>
+											{post.data.description && (
+												<p class="post-desc">{post.data.description}</p>
+											)}
+										</div>
+									</li>
+								))
+							}
+						</ul>
+					</section>
+
+					<!-- Projects Section -->
+					<section class="section-box">
+						<h2>Projects & Code</h2>
+						<ul class="project-list">
+							<li>
+								<strong><a href="https://github.com/svespie" target="_blank">micrograd</a></strong> — Lightweight autograd engine and scalar-valued backpropagation explorer.
+							</li>
+							<li>
+								<strong><a href="https://github.com/svespie" target="_blank">nano-gpt</a></strong> — Mini transformer decoder experiments and attention weight analysis.
+							</li>
+							<li>
+								<strong><a href="https://github.com/svespie" target="_blank">synapse</a></strong> — High-throughput systems telemetry daemon.
+							</li>
+						</ul>
+					</section>
+
+				</div>
+
+				<!-- Sidebar Profile Area -->
+				<aside class="sidebar-col">
+					<div class="profile-card">
+						<div class="avatar-box">SV</div>
+						<h3 class="profile-name">Stan Vespie</h3>
+						<p class="profile-role">AI & Security Researcher</p>
+						<p class="profile-email">stan [at] vespie [dot] dev</p>
+
+						<hr class="card-divider" />
+
+						<div class="profile-links">
+							<a href="https://github.com" target="_blank">GitHub</a>
+							<a href="https://scholar.google.com" target="_blank">Google Scholar</a>
+							<a href="https://x.com" target="_blank">X / Twitter</a>
+							<a href="https://linkedin.com" target="_blank">LinkedIn</a>
+						</div>
+					</div>
+				</aside>
+
+			</div>
 		</main>
 		<Footer />
 	</body>
 </html>
+
+<style>
+	.layout-grid {
+		display: grid;
+		grid-template-columns: 1fr 260px;
+		gap: 2.5em;
+		align-items: start;
+	}
+
+	.section-box {
+		margin-bottom: 2.5em;
+	}
+
+	.section-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+	}
+
+	.post-list {
+		list-style: none;
+		padding: 0;
+		margin: 1em 0 0 0;
+	}
+
+	.post-entry {
+		display: grid;
+		grid-template-columns: 110px 1fr;
+		gap: 1em;
+		margin-bottom: 1.5em;
+		align-items: baseline;
+	}
+
+	.post-date {
+		font-family: var(--font-sans);
+		font-size: 0.85em;
+		color: var(--text-light);
+	}
+
+	.post-title {
+		font-family: var(--font-serif);
+		font-size: 1.1em;
+		font-weight: 600;
+	}
+
+	.post-desc {
+		font-size: 0.92em;
+		color: var(--text-muted);
+		margin-top: 0.2em;
+		margin-bottom: 0;
+	}
+
+	.project-list {
+		list-style-type: square;
+		padding-left: 1.2em;
+	}
+
+	.project-list li {
+		margin-bottom: 0.8em;
+		font-size: 0.95em;
+	}
+
+	/* Profile Sidebar */
+	.profile-card {
+		background: #f9f9f9;
+		border: 1px solid var(--border-color);
+		border-radius: 6px;
+		padding: 1.5em;
+		text-align: center;
+		font-family: var(--font-sans);
+	}
+
+	.avatar-box {
+		width: 70px;
+		height: 70px;
+		background: #a02020;
+		color: white;
+		font-weight: 700;
+		font-size: 1.5em;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0 auto 1em auto;
+	}
+
+	.profile-name {
+		font-size: 1.15em;
+		margin: 0 0 0.2em 0;
+		font-weight: 600;
+	}
+
+	.profile-role {
+		font-size: 0.85em;
+		color: var(--text-muted);
+		margin: 0 0 0.5em 0;
+	}
+
+	.profile-email {
+		font-size: 0.8em;
+		color: var(--text-light);
+		margin: 0;
+	}
+
+	.card-divider {
+		margin: 1em 0;
+		border-top: 1px solid #e5e5e5;
+	}
+
+	.profile-links {
+		display: flex;
+		flex-direction: column;
+		gap: 0.4em;
+		font-size: 0.9em;
+	}
+
+	@media (max-width: 768px) {
+		.layout-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.post-entry {
+			grid-template-columns: 1fr;
+			gap: 0.2em;
+		}
+
+		.sidebar-col {
+			order: -1;
+		}
+	}
+</style>
+

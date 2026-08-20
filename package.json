@@ -1,5 +1,6 @@
 {
   "name": "tokens-and-traces",
+  "description": "Personal research blog on machine learning, computer security, autograd runtimes, and systems engineering.",
   "type": "module",
   "version": "0.0.1",
   "engines": {
