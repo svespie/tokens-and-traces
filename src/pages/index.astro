@@ -14,7 +14,7 @@ const posts = (await getCollection('blog')).sort(
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={`${SITE_TITLE} — Stan Vespie`} description={SITE_DESCRIPTION} />
+		<BaseHead title={`${SITE_TITLE} - Stan Vespie`} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
 		<Header />
@@ -28,11 +28,10 @@ const posts = (await getCollection('blog')).sort(
 					<section class="section-box">
 						<h2>About</h2>
 						<p>
-							Welcome to <strong>Tokens & Traces</strong>. I write about machine learning mechanics, 
-							computer security vulnerabilities, and systems engineering.
+							Welcome to <strong>Tokens & Traces</strong>. I am an Offensive Security Engineer researching AI agent exploitation, indirect prompt injection, and specialized security tooling.
 						</p>
 						<p>
-							My recent work focuses on adversarial indirect prompt injections, AI agent attack lifecycles, and transformer attention dynamics.
+							My work focuses on how AI agency creates new attack vectors - from malicious MCP servers and context poisoning to LLM payload generation and autograd mechanics.
 						</p>
 					</section>
 
@@ -75,7 +74,7 @@ const posts = (await getCollection('blog')).sort(
 					<div class="profile-card">
 						<img src="/stan-vespie.jpg" alt="Stan Vespie" class="avatar-img" />
 						<h3 class="profile-name">Stan Vespie</h3>
-						<p class="profile-role">AI & Security Researcher</p>
+						<p class="profile-role">Offensive Security | AI Agent Exploitation</p>
 
 						<hr class="card-divider" />
 
